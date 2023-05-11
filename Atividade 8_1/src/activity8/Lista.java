@@ -80,12 +80,23 @@ public class Lista {
         }
     }
 
-    // public Jogador removerInicio() {
+    public Jogador removerInicio() throws Exception{
 
-    //     if (!listaVazia()) {
+        Jogador removido;
 
-    //     }
-    // }
+        if (!listaVazia()) {
+            removido = lista[primeiro];
+            for (int i = ultimo; i > primeiro; i--) {
+                lista[i - 1] = lista[i];
+            }
+            ultimo--;
+            tamanho--;
+            return removido;
+        } else {
+            throw new Exception("Não foi possível remover o elemento da lista: a lista está vazia!");
+        }
+    }
+
     
 
 }
