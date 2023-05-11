@@ -162,44 +162,59 @@ public class Jogador {
             int playerId = Integer.parseInt(entrada);
             for (Jogador jogador : arrayOfPlayers) {
                 if (playerId == jogador.id) {
-                    try {
-                        listaDeJogadores.inserirFim(jogador);
-                    } catch (Exception e) {
-
-                    }
+                    listaDeJogadores.inserirFim(jogador);
                 }
             }
             entrada = scanner.nextLine();
         }
 
-        // entrada = scanner.nextLine();
-        // int qtdJogadores = Integer.parseInt(entrada);
+        entrada = scanner.nextLine();
 
-        // for (int i = 0; i < qtdJogadores; i++) {
+        int qtdJogadores = Integer.parseInt(entrada);
+        Jogador removido;
+        int playerId;
+        int posicao;
 
-        //     entrada = scanner.nextLine();
+        for (int i = 0; i < qtdJogadores; i++) {
 
-        //     if (entrada.equals("R")) {
-        //         Jogador desenfileirado;
-        //         try {
-        //             System.out.println("(R) " + desenfileirado.getNome());
-        //         } catch (Exception e) {
+            entrada = scanner.nextLine();
 
-        //         }
-        //     }
-        //     else {
-        //         String[] stringSeparada = entrada.split(" ");
-        //         int playerId = Integer.parseInt(stringSeparada[1]);
-        //         for (Jogador jogador : arrayOfPlayers) {
-        //             if (playerId == jogador.id) {
-        //                 try {
-        //                 } catch (Exception e) {
+            String[] stringSeparada = entrada.split(" ");
 
-        //                 }
-        //             }
-        //         }
-        //     }
-        // }
+            if (stringSeparada[0].equals("II")) {
+                playerId = Integer.parseInt(stringSeparada[1]);
+                for (Jogador jogador : arrayOfPlayers) {
+                    if (playerId == jogador.id) {
+                        listaDeJogadores.inserirInicio(jogador);
+                    }
+                }
+            } else if (stringSeparada[0].equals("IF")) {
+                playerId = Integer.parseInt(stringSeparada[1]);
+                for (Jogador jogador : arrayOfPlayers) {
+                    if (playerId == jogador.id) {
+                        listaDeJogadores.inserirFim(jogador);
+                    }
+                }
+            } else if (stringSeparada[0].equals("I*")) {
+                posicao = Integer.parseInt(stringSeparada[1]);
+                playerId = Integer.parseInt(stringSeparada[2]);
+                for (Jogador jogador : arrayOfPlayers) {
+                    if (playerId == jogador.id) {
+                        listaDeJogadores.inserir(jogador, posicao);
+                    }
+                }
+            } else if (entrada.equals("RI")) {
+                removido = listaDeJogadores.removerInicio();
+                System.out.println("(R) " + removido.getNome());
+            } else if (entrada.equals("RF")) {
+                removido = listaDeJogadores.removerFim();
+                System.out.println("(R) " + removido.getNome());
+            } else if (stringSeparada[0].equals("R*")) {
+                posicao = Integer.parseInt(stringSeparada[1]);
+                removido = listaDeJogadores.remover(posicao);
+                System.out.println("(R) " + removido.getNome());
+            }
+        }
         listaDeJogadores.mostrar();
         scanner.close();
     }

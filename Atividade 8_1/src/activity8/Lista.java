@@ -86,8 +86,8 @@ public class Lista {
 
         if (!listaVazia()) {
             removido = lista[primeiro];
-            for (int i = ultimo; i > primeiro; i--) {
-                lista[i - 1] = lista[i];
+            for (int i = primeiro; i < ultimo; i++) {
+                lista[i] = lista[i + 1];
             }
             ultimo--;
             tamanho--;
@@ -104,11 +104,11 @@ public class Lista {
         if (!listaVazia()) {
             if (posicao >= 0 && posicao <= tamanho) {
                 removido = lista[posicao];
-                for (int i = posicao; i < ultimo; i++) {
+                tamanho--;
+                for (int i = posicao; i < tamanho; i++) {
                     lista[i] = lista[i + 1];
                 }
                 ultimo--;
-                tamanho--;
                 return removido;
             } else {
                 throw new Exception("Não foi possível remover o elemento da lista: a posição informada é inválida!");
@@ -123,8 +123,8 @@ public class Lista {
         Jogador removido;
 
         if (!listaVazia()) {
-            removido = lista[ultimo];
             ultimo--;
+            removido = lista[ultimo];
             tamanho--;
             return removido;
         } else {
@@ -138,7 +138,7 @@ public class Lista {
 
         if (!listaVazia()) {
             for (int i = primeiro; i < tamanho; i++) {
-                System.out.print("[" + i + "]");
+                System.out.print("[" + i + "] ");
                 jogador = lista[i];
                 jogador.imprimir();
             }
