@@ -38,15 +38,30 @@ public class Lista {
     }
 
     public void inserirInicio(Jogador jogador) {
-        
-        Jogador temp = lista[0];
-        lista[0] = jogador;
 
         if (listaCheia() == false) {
-            for (int i = 0; i < lista.length; i++) {
-                
+            for (int i = ultimo; i > 0; i--) {
+                lista[i] = lista[i - 1];
             }
+            lista[0] = jogador;
+        }
+        ultimo++;
+        tamanho++;
+    }
+
+    public void inserir(Jogador jogador, int posicao) {
+
+        if (listaCheia() == false) {
+            if (posicao >= 0 && posicao <= tamanho) {
+                for (int i = ultimo; i > posicao; i--) {
+                        lista[i] = lista[i - 1];
+                    }
+                lista[posicao] = jogador;
+            }
+            ultimo++;
+            tamanho++;
         }
     }
+    
 
 }
