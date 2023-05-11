@@ -97,6 +97,25 @@ public class Lista {
         }
     }
 
-    
+    public Jogador remover(int posicao) throws Exception{
+
+        Jogador removido;
+
+        if (!listaVazia()) {
+            if (posicao >= 0 && posicao <= tamanho) {
+                removido = lista[posicao];
+                for (int i = posicao; i < ultimo; i++) {
+                    lista[i] = lista[i + 1];
+                }
+                ultimo--;
+                tamanho--;
+                return removido;
+            } else {
+                throw new Exception("Não foi possível remover o elemento da lista: a posição informada é inválida!");
+            }
+        } else {
+            throw new Exception("Não foi possível remover o elemento da lista: a lista está vazia!");
+        }
+    }
 
 }
