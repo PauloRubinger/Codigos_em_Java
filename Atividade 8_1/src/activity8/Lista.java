@@ -1,5 +1,7 @@
 package activity8;
 
+import javax.swing.text.Position;
+
 public class Lista {
 
     private Jogador[] lista;
@@ -131,5 +133,21 @@ public class Lista {
             throw new Exception("Não foi possível remover o elemento da lista: a lista está vazia!");
         }
     }
+
+    public void mostrar() throws Exception{
+
+        Jogador jogador;
+
+        if (!listaVazia()) {
+            for (int i = primeiro; i < tamanho; i++) {
+                System.out.print("[" + i + "]");
+                jogador = lista[i];
+                jogador.imprimir();
+            }
+        } else {
+            throw new Exception("Não foi possível mostrar a lista: a lista está vazia!");
+        }
+    }
+
 
 }
