@@ -16,7 +16,7 @@ public class Lista {
         lista = new Jogador[tamanho];
         primeiro = 0;
         ultimo = 0;
-        this.tamanho = tamanho;
+        tamanho = 0;
     }
 
     public boolean listaVazia() {
@@ -34,6 +34,18 @@ public class Lista {
             return true;
         } else {
             return false;
+        }
+    }
+
+    public void inserirInicio(Jogador jogador) {
+        
+        Jogador temp = lista[0];
+        lista[0] = jogador;
+
+        if (listaCheia() == false) {
+            for (int i = 0; i < lista.length; i++) {
+                
+            }
         }
     }
 
