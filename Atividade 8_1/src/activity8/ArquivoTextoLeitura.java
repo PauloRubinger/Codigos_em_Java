@@ -1,4 +1,4 @@
-package activity8_1;
+package activity8;
 
 import java.io.*;
 
