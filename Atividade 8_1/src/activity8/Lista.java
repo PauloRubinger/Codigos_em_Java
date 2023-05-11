@@ -49,7 +49,7 @@ public class Lista {
         tamanho++;
     }
 
-    public void inserir(Jogador jogador, int posicao) {
+    public void inserir(Jogador jogador, int posicao) throws Exception{
 
         if (listaCheia() == false) {
             if (posicao >= 0 && posicao <= tamanho) {
@@ -57,9 +57,13 @@ public class Lista {
                         lista[i] = lista[i - 1];
                     }
                 lista[posicao] = jogador;
+                ultimo++;
+                tamanho++;
+            } else {
+                throw new Exception("Não foi possível inserir o elemento na lista: a posição informada é inválida!");
             }
-            ultimo++;
-            tamanho++;
+        } else {
+            throw new Exception("Não foi possível inserir o elemento na lista: a lista está cheia!");
         }
     }
     
