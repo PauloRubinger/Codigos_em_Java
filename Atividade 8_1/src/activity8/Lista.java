@@ -73,10 +73,19 @@ public class Lista {
 
         if (!listaCheia()) {
             lista[ultimo] = jogador;
+            ultimo++;
+            tamanho++;
         } else {
             throw new Exception("Não foi possível inserir o elemento na lista: a lista está cheia!");
         }
     }
+
+    // public Jogador removerInicio() {
+
+    //     if (!listaVazia()) {
+
+    //     }
+    // }
     
 
 }
