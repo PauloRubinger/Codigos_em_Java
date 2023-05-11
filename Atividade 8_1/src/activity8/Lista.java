@@ -70,7 +70,7 @@ public class Lista {
     public void inserirFim(Jogador jogador) {
 
         if (!listaCheia()) {
-            for (int i = ultimo; i > )
+            
         }
     }
     
