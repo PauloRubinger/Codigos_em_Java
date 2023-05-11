@@ -118,4 +118,18 @@ public class Lista {
         }
     }
 
+    public Jogador removerFim() throws Exception{
+
+        Jogador removido;
+
+        if (!listaVazia()) {
+            removido = lista[ultimo];
+            ultimo--;
+            tamanho--;
+            return removido;
+        } else {
+            throw new Exception("Não foi possível remover o elemento da lista: a lista está vazia!");
+        }
+    }
+
 }
