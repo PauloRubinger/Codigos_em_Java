@@ -1,7 +1,5 @@
 package activity8;
 
-import javax.swing.text.Position;
-
 public class Lista {
 
     private Jogador[] lista;
@@ -148,6 +146,4 @@ public class Lista {
             throw new Exception("Não foi possível mostrar a lista: a lista está vazia!");
         }
     }
-
-
 }

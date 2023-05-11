@@ -136,7 +136,7 @@ public class Jogador {
         ArquivoTextoLeitura leituraArquivo = new ArquivoTextoLeitura("Atividade 6_1/tmp/jogadores.txt");
         leituraArquivo.lerArquivo();
 
-        Lista filaDeJogadores = new Lista(5);
+        Lista listaDeJogadores = new Lista(200);
 
         while (leituraArquivo != null) {
 
@@ -163,7 +163,7 @@ public class Jogador {
             for (Jogador jogador : arrayOfPlayers) {
                 if (playerId == jogador.id) {
                     try {
-
+                        listaDeJogadores.inserirFim(jogador);
                     } catch (Exception e) {
 
                     }
@@ -172,37 +172,35 @@ public class Jogador {
             entrada = scanner.nextLine();
         }
 
-        //Quantidade de jogadores a ser enfileirado/desenfileirado
+        // entrada = scanner.nextLine();
+        // int qtdJogadores = Integer.parseInt(entrada);
 
-        entrada = scanner.nextLine();
-        int qtdJogadores = Integer.parseInt(entrada);
+        // for (int i = 0; i < qtdJogadores; i++) {
 
-        for (int i = 0; i < qtdJogadores; i++) {
+        //     entrada = scanner.nextLine();
 
-            entrada = scanner.nextLine();
+        //     if (entrada.equals("R")) {
+        //         Jogador desenfileirado;
+        //         try {
+        //             System.out.println("(R) " + desenfileirado.getNome());
+        //         } catch (Exception e) {
 
-            if (entrada.equals("R")) {
-                Jogador desenfileirado;
-                try {
-                    System.out.println("(R) " + desenfileirado.getNome());
-                } catch (Exception e) {
+        //         }
+        //     }
+        //     else {
+        //         String[] stringSeparada = entrada.split(" ");
+        //         int playerId = Integer.parseInt(stringSeparada[1]);
+        //         for (Jogador jogador : arrayOfPlayers) {
+        //             if (playerId == jogador.id) {
+        //                 try {
+        //                 } catch (Exception e) {
 
-                }
-            }
-            else {
-                String[] stringSeparada = entrada.split(" ");
-                int playerId = Integer.parseInt(stringSeparada[1]);
-                for (Jogador jogador : arrayOfPlayers) {
-                    if (playerId == jogador.id) {
-                        try {
-                        } catch (Exception e) {
-
-                        }
-                    }
-                }
-            }
-        }
-        filaDeJogadores.mostrar();
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
+        listaDeJogadores.mostrar();
         scanner.close();
     }
 
