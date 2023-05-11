@@ -136,7 +136,7 @@ public class Jogador {
         ArquivoTextoLeitura leituraArquivo = new ArquivoTextoLeitura("Atividade 6_1/tmp/jogadores.txt");
         leituraArquivo.lerArquivo();
 
-        Fila filaDeJogadores = new Fila(6);
+        Lista filaDeJogadores = new Lista(5);
 
         while (leituraArquivo != null) {
 
@@ -163,8 +163,7 @@ public class Jogador {
             for (Jogador jogador : arrayOfPlayers) {
                 if (playerId == jogador.id) {
                     try {
-                        filaDeJogadores.enfileirar(jogador);
-                        filaDeJogadores.obterMediaAltura();
+
                     } catch (Exception e) {
 
                     }
@@ -185,7 +184,6 @@ public class Jogador {
             if (entrada.equals("R")) {
                 Jogador desenfileirado;
                 try {
-                    desenfileirado = filaDeJogadores.desenfileirar();
                     System.out.println("(R) " + desenfileirado.getNome());
                 } catch (Exception e) {
 
@@ -197,8 +195,6 @@ public class Jogador {
                 for (Jogador jogador : arrayOfPlayers) {
                     if (playerId == jogador.id) {
                         try {
-                            filaDeJogadores.enfileirar(jogador);
-                            filaDeJogadores.obterMediaAltura();
                         } catch (Exception e) {
 
                         }
