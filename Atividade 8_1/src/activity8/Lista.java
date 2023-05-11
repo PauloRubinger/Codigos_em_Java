@@ -37,7 +37,7 @@ public class Lista {
         }
     }
 
-    public void inserirInicio(Jogador jogador) {
+    public void inserirInicio(Jogador jogador) throws Exception{
 
         if (!listaCheia()) {
             for (int i = ultimo; i > primeiro; i--) {
@@ -46,6 +46,8 @@ public class Lista {
             lista[primeiro] = jogador;
             ultimo++;
             tamanho++;
+        } else {
+            throw new Exception("Não foi possível inserir o elemento na lista: a lista está cheia!");
         }
     }
 
@@ -67,10 +69,12 @@ public class Lista {
         }
     }
 
-    public void inserirFim(Jogador jogador) {
+    public void inserirFim(Jogador jogador) throws Exception{
 
         if (!listaCheia()) {
-            
+            lista[ultimo] = jogador;
+        } else {
+            throw new Exception("Não foi possível inserir o elemento na lista: a lista está cheia!");
         }
     }
     
