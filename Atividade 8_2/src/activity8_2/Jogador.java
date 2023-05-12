@@ -136,7 +136,7 @@ public class Jogador {
         ArquivoTextoLeitura leituraArquivo = new ArquivoTextoLeitura("Atividade 8_1/tmp/jogadores.txt");
         leituraArquivo.lerArquivo();
 
-        Lista listaDeJogadores = new Lista(200);
+        Lista listaDeJogadores = new Lista();
 
         while (leituraArquivo != null) {
 
