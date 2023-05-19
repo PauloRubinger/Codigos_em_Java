@@ -100,27 +100,27 @@ public class ListaDuplamenteEncadeada {
 
     public Jogador remover(int posicao) throws Exception {
 
-        Celula anterior;
-        Celula removida;
-        Celula proximaCelula;
+        Celula aux;
+        Celula removido;
 
         if (!listaVazia()) {
             if (posicao >= 0 && posicao < tamanho) {
-                anterior = primeiro;
+                aux = primeiro;
                 for (int i = 0; i < posicao; i++) {
-                    anterior = anterior.getProximo();
+                    aux = aux.getProximo();
                 }
-                removida = anterior.getProximo();
-                proximaCelula = removida.getProximo();
-                anterior.setProximo(proximaCelula);
-                removida.setProximo(null);
-
-                if (removida == ultimo) {
-                    ultimo = anterior;
+                removido = aux.getProximo();
+                aux.setProximo(removido.getProximo());
+                aux.setAnterior(removido.getAnterior());
+                removido.setProximo(null);
+                removido.setAnterior(null);
+                
+                if (removido == ultimo) {
+                    ultimo = aux;
                 }
                 
                 tamanho--;
-                return removida.getItem();
+                return removido.getItem();
             } else {
                 throw new Exception("Não foi possível remover o elemento da lista: a posição informada é inválida!");
             }

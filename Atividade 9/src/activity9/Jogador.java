@@ -201,6 +201,8 @@ public class Jogador {
                 for (Jogador jogador : arrayOfPlayers) {
                     if (playerId == jogador.id) {
                         listaDeJogadores.inserir(jogador, posicao);
+                        listaDeJogadores.mostrar();
+
                     }
                 }
             } else if (entrada.equals("RI")) {
@@ -213,6 +215,8 @@ public class Jogador {
                 posicao = Integer.parseInt(stringSeparada[1]);
                 removido = listaDeJogadores.remover(posicao);
                 System.out.println("(R) " + removido.getNome());
+                listaDeJogadores.mostrar();
+
             }
         }
         listaDeJogadores.mostrar();
