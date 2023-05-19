@@ -93,7 +93,7 @@ public class ListaDuplamenteEncadeada {
         Celula proximaCelula;
 
         if (!listaVazia()) {
-            if (posicao >= 0 && posicao <= tamanho) {
+            if (posicao >= 0 && posicao < tamanho) {
                 anterior = primeiro;
                 for (int i = 0; i < posicao; i++) {
                     anterior = anterior.getProximo();
