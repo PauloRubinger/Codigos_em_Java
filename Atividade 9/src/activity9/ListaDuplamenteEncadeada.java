@@ -37,25 +37,37 @@ public class ListaDuplamenteEncadeada {
     
     public void inserir(Jogador jogador, int posicao) throws Exception {
 
-        Celula anterior;
-        Celula proximaCelula;
+        Celula aux;
         Celula novaCelula;
 
         if (posicao >= 0 && posicao <= tamanho) {
-            anterior = primeiro;
-            for (int i = 0; i < posicao; i++) {
-                anterior = anterior.getProximo();
-            }
-            novaCelula = new Celula(jogador);
-            proximaCelula = anterior.getProximo();
-            anterior.setProximo(novaCelula);
-            novaCelula.setProximo(proximaCelula);
+            if (posicao <= tamanho/2) {
+                aux = primeiro;
+                for (int i = 0; i < posicao; i++) {
+                    aux = aux.getProximo();
+                }
+                novaCelula = new Celula(jogador);
+                novaCelula.setProximo(aux.getProximo());
+                aux.setProximo(novaCelula);
+                novaCelula.setAnterior(aux);
+                aux.setAnterior(novaCelula);
+                tamanho++;
+            } else {
+                aux = ultimo;
+                for (int i = tamanho; i > posicao; i--) {
+                    aux = aux.getAnterior();
+                }
+                novaCelula = new Celula(jogador);
+                novaCelula.setProximo(aux.getProximo());
+                aux.setProximo(novaCelula);
+                novaCelula.setAnterior(aux);
+                aux.setAnterior(novaCelula);
 
-            if (posicao == tamanho) {
-                ultimo = novaCelula;
+                if (posicao == tamanho) {
+                    ultimo = novaCelula;
+                }
+                tamanho++;
             }
-
-            tamanho++;
         } else {
             throw new Exception("Não foi possível inserir o elemento na lista: a posição informada é inválida!");
         }
@@ -86,7 +98,7 @@ public class ListaDuplamenteEncadeada {
         }
     }
 
-    public Jogador remover(int posicao) throws Exception{
+    public Jogador remover(int posicao) throws Exception {
 
         Celula anterior;
         Celula removida;
@@ -117,7 +129,7 @@ public class ListaDuplamenteEncadeada {
         }
     }
 
-    public Jogador removerFim() throws Exception{
+    public Jogador removerFim() throws Exception {
 
         Celula removido;
         Celula penultimo;
