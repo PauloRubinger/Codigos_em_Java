@@ -30,11 +30,11 @@ public class ListaDuplamenteEncadeada {
 
         novaCelula = new Celula(jogador);
         novaCelula.setProximo(primeiro.getProximo());
+        primeiro.getProximo().setAnterior(novaCelula);;
         primeiro.setProximo(novaCelula);
         tamanho++;
     }
     
-
     public void inserir(Jogador jogador, int posicao) throws Exception {
 
         Celula anterior;
@@ -67,7 +67,7 @@ public class ListaDuplamenteEncadeada {
         
         novaCelula = new Celula(jogador);
         ultimo.setProximo(novaCelula);
-        novaCelula.setProximo(null);
+        novaCelula.setAnterior(ultimo);
         ultimo = novaCelula;
         tamanho++;
     }
@@ -120,19 +120,17 @@ public class ListaDuplamenteEncadeada {
 
     public Jogador removerFim() throws Exception{
 
-        Jogador removido;
-        Celula anterior;
+        Celula removida;
+        Celula penultimo;
 
         if (!listaVazia()) {
-            removido = ultimo.getItem();
-            anterior = primeiro;
-            for (int i = 0; i < tamanho - 1; i++) {
-                anterior = anterior.getProximo();
-            }
-            anterior.setProximo(null);
-            ultimo = anterior;
+            removida = ultimo;
+            penultimo = ultimo.getAnterior();
+            penultimo.setProximo(null);
+            removida.setAnterior(null);
+            ultimo = penultimo;
             tamanho--;
-            return removido;
+            return removida.getItem();
         } else {
             throw new Exception("Não foi possível remover o elemento da lista: a lista está vazia!");
         }
