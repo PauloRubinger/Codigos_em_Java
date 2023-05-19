@@ -33,4 +33,12 @@ public class Celula {
     public void setProximo(Celula proximo) {
         this.proximo = proximo;
     }
+
+    public Celula getAnterior() {
+        return this.anterior;
+    }
+
+    public void setAnterior(Celula anterior) {
+        this.anterior = anterior;
+    }
 }
