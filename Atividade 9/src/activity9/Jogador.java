@@ -133,7 +133,7 @@ public class Jogador {
 
         ArrayList<Jogador> arrayOfPlayers = new ArrayList<>();
 
-        ArquivoTextoLeitura leituraArquivo = new ArquivoTextoLeitura("Atividade 8_1/tmp/jogadores.txt");
+        ArquivoTextoLeitura leituraArquivo = new ArquivoTextoLeitura("Atividade 9/tmp/jogadores.txt");
         leituraArquivo.lerArquivo();
 
         ListaDuplamenteEncadeada listaDeJogadores = new ListaDuplamenteEncadeada();
