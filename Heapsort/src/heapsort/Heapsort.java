@@ -11,7 +11,7 @@ public class Heapsort {
     public ArrayList<Jogador> sort(ArrayList<Jogador> arrayOfPlayers) {
 
         ArrayList<Jogador> temp = new ArrayList<Jogador>(arrayOfPlayers.size() + 1);
-        temp.add(null);
+        temp.add(0, null);
 
       	for (int i = 0; i < arrayOfPlayers.size(); i++) {
         	temp.add(i + 1, arrayOfPlayers.get(i));
@@ -40,7 +40,7 @@ public class Heapsort {
 
     void constroi(ArrayList<Jogador> arrayOfPlayers, int tamHeap) {
 
-        for (int i = tamHeap; i > 1 && arrayOfPlayers.get(i).getAltura() > arrayOfPlayers.get(i/2).getAltura(); i /= 2) {
+        for (int i = tamHeap; (i > 1 && (arrayOfPlayers.get(i).getAltura() > arrayOfPlayers.get(i/2).getAltura() || (arrayOfPlayers.get(i).getAltura() == arrayOfPlayers.get(i/2).getAltura() && (arrayOfPlayers.get(i).getNome().compareTo(arrayOfPlayers.get(i/2).getNome()) > 0)))); i /= 2) {
             troca(arrayOfPlayers, i, i/2);
         }
     }
@@ -51,7 +51,7 @@ public class Heapsort {
               
         while (i <= (tamHeap/2)) {
             int filho = getMaiorFilho(arrayOfPlayers, i, tamHeap);
-            if(arrayOfPlayers.get(i).getAltura() < arrayOfPlayers.get(filho).getAltura()) {
+            if (arrayOfPlayers.get(i).getAltura() < arrayOfPlayers.get(filho).getAltura() || (arrayOfPlayers.get(i).getAltura() == arrayOfPlayers.get(filho).getAltura() && (arrayOfPlayers.get(i).getNome().compareTo(arrayOfPlayers.get(filho).getNome()) < 0))) {
                 troca(arrayOfPlayers, i, filho);
                 i = filho;
             } else {
@@ -64,7 +64,7 @@ public class Heapsort {
     
         int filho;
     
-        if (2*i == tamHeap || arrayOfPlayers.get(2*i).getAltura() > arrayOfPlayers.get(2*i + 1).getAltura()) {
+        if (2*i == tamHeap || arrayOfPlayers.get(2*i).getAltura() > arrayOfPlayers.get(2*i + 1).getAltura() || (arrayOfPlayers.get(2*i).getAltura() == arrayOfPlayers.get(2*i + 1).getAltura() && (arrayOfPlayers.get(2*i).getNome().compareTo(arrayOfPlayers.get(2*i + 1).getNome()) > 0))) {
             filho = 2*i;
         } else {
             filho = 2*i + 1;
