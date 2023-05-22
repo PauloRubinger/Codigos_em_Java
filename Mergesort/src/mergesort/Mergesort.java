@@ -1,8 +1,12 @@
 package mergesort;
 
 import java.util.ArrayList;
+import java.io.*;
 
 public class Mergesort {
+
+    int comp = 0;
+    int changes = 0;
     
     public Mergesort() {
         
@@ -45,20 +49,43 @@ public class Mergesort {
 
             if (a1.get(i).getUniversidade().compareTo(a2.get(j).getUniversidade()) < 0 || ((a1.get(i).getUniversidade().compareTo(a2.get(j).getUniversidade()) == 0) && (a1.get(i).getNome().compareTo(a2.get(j).getNome()) < 0))) {
                 arrayOfPlayers.set(k, a1.get(i++));
+                // Comparações considerando pior caso
+                comp += 3;
+                changes++;
             } else {
                 arrayOfPlayers.set(k, a2.get(j++));
+                comp++;
+                changes++;
             }
         }
     
         if (i == n1) {
             for (; k <= dir; k++) {
                 arrayOfPlayers.set(k, a2.get(j++));
+                changes++;
             }
         }
         else {
             for (; k <= dir; k++) {
                 arrayOfPlayers.set(k, a1.get(i++));
+                changes++;
             }
         }
+    }
+    
+    // Criação do arquivo de log conforme pedido no enunciado para analisar o número de comparações e trocas feitas pelo método de ordenação, além do tempo de execução
+    public void arquivoLog(long startTime, long endTime) throws Exception{
+
+        FileWriter file = new FileWriter("794310_mergesort.txt");
+        PrintWriter log = new PrintWriter(file);
+        long timeElapsed = endTime - startTime;
+        
+        log.printf("794310");
+        log.printf("\tTempo de execução(ms):" + timeElapsed);
+        log.printf("\tComparações feitas:" + comp);
+        log.printf("\tMovimentações feitas:" + changes);
+
+        log.close();
+        file.close();
     }
 }

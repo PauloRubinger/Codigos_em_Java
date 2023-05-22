@@ -11,9 +11,15 @@ public class App {
 
         try {
             arrayOfPlayers = jogador.leitura();
+
             int esq = 0;
             int dir = arrayOfPlayers.size() - 1;
+
+            long startTime = System.currentTimeMillis();
             arrayOfPlayers = mergesort.mergesort(arrayOfPlayers, esq, dir);
+            long endTime = System.currentTimeMillis();
+
+            mergesort.arquivoLog(startTime, endTime);
 
             for (int i = 0; i < arrayOfPlayers.size(); i++) {
                 arrayOfPlayers.get(i).imprimir();
