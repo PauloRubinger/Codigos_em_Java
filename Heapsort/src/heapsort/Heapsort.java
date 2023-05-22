@@ -20,6 +20,7 @@ public class Heapsort {
       	//Contrução do heap
       	for (int tamHeap = 2; tamHeap <= arrayOfPlayers.size(); tamHeap++) {
         	constroi(temp, tamHeap);
+            
       	}
 
       	//Ordenação propriamente dita
@@ -42,6 +43,7 @@ public class Heapsort {
 
         for (int i = tamHeap; (i > 1 && (arrayOfPlayers.get(i).getAltura() > arrayOfPlayers.get(i/2).getAltura() || (arrayOfPlayers.get(i).getAltura() == arrayOfPlayers.get(i/2).getAltura() && (arrayOfPlayers.get(i).getNome().compareTo(arrayOfPlayers.get(i/2).getNome()) > 0)))); i /= 2) {
             troca(arrayOfPlayers, i, i/2);
+            
         }
     }
     

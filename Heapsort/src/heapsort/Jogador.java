@@ -128,13 +128,13 @@ public class Jogador {
         this.estadoNascimento = estadoNascimento;
     }
 
-    public void leitura() throws Exception {
+    public ArrayList<Jogador> leitura() throws Exception {
 
         Scanner scanner = new Scanner(System.in);
 
         ArrayList<Jogador> arrayOfPlayers = new ArrayList<>();
 
-        ArquivoTextoLeitura leituraArquivo = new ArquivoTextoLeitura("Heapsort/Heapsort/tmp/jogadores.txt");
+        ArquivoTextoLeitura leituraArquivo = new ArquivoTextoLeitura("Heapsort/tmp/jogadores.txt");
         leituraArquivo.lerArquivo();
 
         while (leituraArquivo != null) {
@@ -155,7 +155,6 @@ public class Jogador {
 
         leituraArquivo.fecharArquivo();
 
-        Heapsort heapSort = new Heapsort();
         ArrayList<Jogador> newArrayOfPlayers = new ArrayList<>(); 
         String entrada = scanner.nextLine();
         HashSet<Integer> addedPlayerIds = new HashSet<>();
@@ -172,11 +171,7 @@ public class Jogador {
         }
         scanner.close();
         
-        ArrayList<Jogador> arrayOfPlayersSorted = heapSort.sort(newArrayOfPlayers);
-        
-        for (int i = 0; i < arrayOfPlayersSorted.size(); i++) {
-            arrayOfPlayersSorted.get(i).imprimir();
-        }
+        return newArrayOfPlayers;
     }
 
     public void imprimir() {
