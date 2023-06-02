@@ -12,6 +12,12 @@ public class Node {
         right = null;
     }
 
+    public Node(Jogador newPlayer) {
+        item = newPlayer;
+        left = null;
+        right = null;
+    }
+
     public Jogador getitem() {
         return item;
     }

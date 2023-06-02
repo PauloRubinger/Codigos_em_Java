@@ -128,7 +128,7 @@ public class Jogador {
         this.estadoNascimento = estadoNascimento;
     }
 
-    public ArrayList<Jogador> leitura() throws Exception {
+    public void leitura() throws Exception {
 
         Scanner scanner = new Scanner(System.in);
 
@@ -155,23 +155,21 @@ public class Jogador {
 
         leituraArquivo.fecharArquivo();
 
-        ArrayList<Jogador> newArrayOfPlayers = new ArrayList<>(); 
-        String entrada = scanner.nextLine();
+        BinarySearchTree bst = new BinarySearchTree();
         HashSet<Integer> addedPlayerIds = new HashSet<>();
+        String entrada = scanner.nextLine();
 
         while (!entrada.equals("FIM")) {
             int playerId = Integer.parseInt(entrada);
             for (Jogador jogador : arrayOfPlayers) {
                 if (playerId == jogador.id && !addedPlayerIds.contains(playerId)) {
-                    newArrayOfPlayers.add(jogador);
+                    bst.insert(jogador);
                     addedPlayerIds.add(playerId);
                 }
             }
             entrada = scanner.nextLine();
         }
         scanner.close();
-        
-        return newArrayOfPlayers;
     }
 
     public void imprimir() {
