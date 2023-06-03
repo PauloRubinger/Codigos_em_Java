@@ -8,7 +8,7 @@ public class App {
         try {
 
             jogador.leitura();
-
+            
             // long startTime = System.currentTimeMillis();
             // long endTime = System.currentTimeMillis();
     

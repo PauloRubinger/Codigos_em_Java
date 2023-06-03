@@ -170,16 +170,15 @@ public class Jogador {
             entrada = scanner.nextLine();
         }
 
+        entrada = scanner.nextLine();
+
         while (!entrada.equals("FIM")) {
-            for (Jogador jogador : arrayOfPlayers) {
-                if (entrada.equals(jogador.getNome())) {
-                    bst.search(entrada);
-                }
-            }
+            bst.search(entrada);
             entrada = scanner.nextLine();
         }
 
         scanner.close();
+
     }
 
     public void imprimir() {

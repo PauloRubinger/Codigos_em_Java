@@ -1,5 +1,7 @@
 package bst;
 
+import java.util.ArrayList;
+
 public class BinarySearchTree {
     
     private Node root;
@@ -16,20 +18,34 @@ public class BinarySearchTree {
         this.root = root;
     }
 
-    public Jogador search(String key) {
-        return search(this.root, key);
+    public Node search(String key) {
+        ArrayList<Node> path = new ArrayList<>(); // List to store the search path
+        Node result = search(this.root, key, path);
+
+        for (Node node : path) {
+            System.out.print(node.getitem().getNome() + " ");
+        }
+        
+        if (result != null) {
+            System.out.println("SIM");
+        } else {
+            System.out.println("NAO");
+        }
+        return result;
     }
 
-    public Jogador search(Node subtreeRoot, String key) {
-        
+    public Node search(Node subtreeRoot, String key, ArrayList<Node> path) {
         if (subtreeRoot == null) {
             return null;
         } else if (subtreeRoot.getitem().getNome().equals(key)) {
-            return subtreeRoot.getitem();
+            path.add(subtreeRoot); // Add the current node to the path
+            return subtreeRoot;
         } else if (subtreeRoot.getitem().getNome().compareTo(key) > 0) {
-            return search(subtreeRoot.getLeft(), key);
+            path.add(subtreeRoot); // Add the current node to the path
+            return search(subtreeRoot.getLeft(), key, path);
         } else {
-            return search(subtreeRoot.getRight(), key);
+            path.add(subtreeRoot); // Add the current node to the path
+            return search(subtreeRoot.getRight(), key, path);
         }
     }
 
@@ -89,16 +105,42 @@ public class BinarySearchTree {
         return subtreeRoot;
     }
 
-    public void inOrderTreeWalk() {
-        inOrderTreeWalk(this.root);
+    public void inorderTreeWalk() {
+        inorderTreeWalk(this.root);
     }
 
-    public void inOrderTreeWalk(Node subtreeRoot) {
+    public void inorderTreeWalk(Node subtreeRoot) {
 
         if (subtreeRoot != null) {
-            inOrderTreeWalk(subtreeRoot.getLeft());
-            System.out.print(subtreeRoot.getitem().getNome());
-            inOrderTreeWalk(subtreeRoot.getRight());
+            inorderTreeWalk(subtreeRoot.getLeft());
+            System.out.print(subtreeRoot.getitem().getNome() + " ");
+            inorderTreeWalk(subtreeRoot.getRight());
+        }
+    }
+
+    public void preorderTreeWalk() {
+        preorderTreeWalk(this.root);
+    }
+
+    public void preorderTreeWalk(Node subtreeRoot) {
+
+        if (subtreeRoot != null) {
+            System.out.print(subtreeRoot.getitem().getNome() + " ");
+            preorderTreeWalk(subtreeRoot.getLeft());
+            preorderTreeWalk(subtreeRoot.getRight());
+        }
+    }
+
+    public void postorderTreeWalk() {
+        postorderTreeWalk(this.root);
+    }
+
+    public void postorderTreeWalk(Node subtreeRoot) {
+
+        if (subtreeRoot != null) {
+            postorderTreeWalk(subtreeRoot.getLeft());
+            postorderTreeWalk(subtreeRoot.getRight());
+            System.out.print(subtreeRoot.getitem().getNome() + " ");
         }
     }
 }
