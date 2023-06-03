@@ -128,7 +128,7 @@ public class Jogador {
         this.estadoNascimento = estadoNascimento;
     }
 
-    public void leitura() throws Exception {
+    public BinarySearchTree leitura() throws Exception {
 
         Scanner scanner = new Scanner(System.in);
 
@@ -172,13 +172,14 @@ public class Jogador {
 
         entrada = scanner.nextLine();
 
-        while (!entrada.equals("FIM")) {
+        while (!entrada.equals("FIM")) {              
             bst.search(entrada);
             entrada = scanner.nextLine();
         }
 
         scanner.close();
 
+        return bst;
     }
 
     public void imprimir() {

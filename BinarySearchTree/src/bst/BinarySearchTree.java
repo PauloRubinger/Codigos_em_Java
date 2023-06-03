@@ -1,8 +1,11 @@
 package bst;
 
 import java.util.ArrayList;
+import java.io.*;
 
 public class BinarySearchTree {
+    
+    int comp = 0; // For the log file (it stores the number of comparisons of the search method)
     
     private Node root;
 
@@ -19,31 +22,38 @@ public class BinarySearchTree {
     }
 
     public Node search(String key) {
+
         ArrayList<Node> path = new ArrayList<>(); // List to store the search path
         Node result = search(this.root, key, path);
 
         for (Node node : path) {
             System.out.print(node.getitem().getNome() + " ");
         }
-        
+
         if (result != null) {
             System.out.println("SIM");
         } else {
             System.out.println("NAO");
         }
+
         return result;
     }
 
     public Node search(Node subtreeRoot, String key, ArrayList<Node> path) {
+
         if (subtreeRoot == null) {
+            comp++;
             return null;
         } else if (subtreeRoot.getitem().getNome().equals(key)) {
+            comp++;
             path.add(subtreeRoot); // Add the current node to the path
             return subtreeRoot;
         } else if (subtreeRoot.getitem().getNome().compareTo(key) > 0) {
+            comp++;
             path.add(subtreeRoot); // Add the current node to the path
             return search(subtreeRoot.getLeft(), key, path);
         } else {
+            comp++;
             path.add(subtreeRoot); // Add the current node to the path
             return search(subtreeRoot.getRight(), key, path);
         }
@@ -142,5 +152,19 @@ public class BinarySearchTree {
             postorderTreeWalk(subtreeRoot.getRight());
             System.out.print(subtreeRoot.getitem().getNome() + " ");
         }
+    }
+
+    public void logFile(long startTime, long endTime) throws Exception{
+
+        FileWriter file = new FileWriter("794310_arvoreBinaria.txt");
+        PrintWriter log = new PrintWriter(file);
+        long timeElapsed = endTime - startTime;
+        
+        log.printf("794310");
+        log.printf("\tTempo de execução(ms):" + timeElapsed);
+        log.printf("\tComparações feitas:" + comp);
+
+        log.close();
+        file.close();
     }
 }

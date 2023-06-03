@@ -4,14 +4,16 @@ public class App {
     public static void main(String[] args) {
 
         Jogador jogador = new Jogador();
+        BinarySearchTree bst = new BinarySearchTree();
 
         try {
 
-            jogador.leitura();
+            long startTime = System.currentTimeMillis();
+            bst = jogador.leitura();
+            long endTime = System.currentTimeMillis();
+
+            bst.logFile(startTime, endTime);
             
-            // long startTime = System.currentTimeMillis();
-            // long endTime = System.currentTimeMillis();
-    
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
