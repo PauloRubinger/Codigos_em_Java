@@ -133,7 +133,7 @@ public class Jogador {
 
         ArrayList<Jogador> arrayOfPlayers = new ArrayList<>();
 
-        ArquivoTextoLeitura leituraArquivo = new ArquivoTextoLeitura("Activity 6_2/tmp/jogadores.txt");
+        ArquivoTextoLeitura leituraArquivo = new ArquivoTextoLeitura("Atividade 6_2/tmp/jogadores.txt");
         leituraArquivo.lerArquivo();
 
         Fila filaDeJogadores = new Fila();
