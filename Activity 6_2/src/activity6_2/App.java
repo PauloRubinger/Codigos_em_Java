@@ -1,7 +1,7 @@
 package activity6_2;
 
 public class App {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
 
         Jogador jogador = new Jogador();
 
