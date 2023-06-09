@@ -8,11 +8,11 @@ public class App {
 
         try {
 
-            // long startTime = System.currentTimeMillis();
+            long startTime = System.currentTimeMillis();
             avlTree = jogador.leitura();
-            // long endTime = System.currentTimeMillis();
+            long endTime = System.currentTimeMillis();
 
-            // avlTree.logFile(startTime, endTime);
+            avlTree.logFile(startTime, endTime);
             
         } catch (Exception e) {
             System.out.println(e.getMessage());

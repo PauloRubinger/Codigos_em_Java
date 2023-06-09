@@ -144,15 +144,15 @@ public class AVLTree {
     }
 
     public Node rotateRight(Node subtreeRoot) {
-
+    
         Node leftChild = subtreeRoot.getLeft();
         Node rightChildOfLeftChild = leftChild.getRight();
 
-        leftChild.setRight(subtreeRoot);
         subtreeRoot.setLeft(rightChildOfLeftChild);
+        leftChild.setRight(subtreeRoot);
 
+        subtreeRoot.setHeight();
         leftChild.setHeight();
-        rightChildOfLeftChild.setHeight();
 
         return leftChild;
     }
@@ -162,11 +162,11 @@ public class AVLTree {
         Node rightChild = subtreeRoot.getRight();
         Node leftChildOfRightChild = rightChild.getLeft();
 
-        rightChild.setLeft(subtreeRoot);
         subtreeRoot.setRight(leftChildOfRightChild);
+        rightChild.setLeft(subtreeRoot);
 
-        rightChild.getHeight();
-        leftChildOfRightChild.setHeight();
+        subtreeRoot.setHeight();
+        rightChild.setHeight();
 
         return rightChild;
     }
@@ -212,7 +212,7 @@ public class AVLTree {
 
     public void logFile(long startTime, long endTime) throws Exception{
 
-        FileWriter file = new FileWriter("794310_arvoreBinaria.txt");
+        FileWriter file = new FileWriter("794310_arvoreAVL.txt");
         PrintWriter log = new PrintWriter(file);
         long timeElapsed = endTime - startTime;
         
