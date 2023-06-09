@@ -67,7 +67,7 @@ public class AVLTree {
             subtreeRoot.setRight(insert(subtreeRoot.getRight(), newPlayer));
         }
 
-        return subtreeRoot;
+        return balance(subtreeRoot);
     }
 
     public void remove(Jogador removed) throws Exception {
@@ -92,7 +92,7 @@ public class AVLTree {
             subtreeRoot.setRight(remove(subtreeRoot.getRight(), playerRemoved));
         }
 
-        return subtreeRoot;
+        return balance(subtreeRoot);
     }
 
     public Node predecessor(Node nodeRemove, Node subtreeRoot) {
@@ -104,7 +104,7 @@ public class AVLTree {
             subtreeRoot = subtreeRoot.getLeft();
         }
 
-        return subtreeRoot;
+        return balance(subtreeRoot);
     }
 
     public Node balance(Node subtreeRoot) {
