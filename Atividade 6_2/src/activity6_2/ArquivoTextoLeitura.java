@@ -9,7 +9,7 @@ public class ArquivoTextoLeitura {
     ArquivoTextoLeitura(String nomeArquivo) {
 
         try {
-            input = new BufferedReader(new InputStreamReader(new FileInputStream("Activity 6_2/tmp/jogadores.txt"), "UTF-8"));
+            input = new BufferedReader(new InputStreamReader(new FileInputStream("Atividade 6_2/tmp/jogadores.txt"), "UTF-8"));
         } catch (UnsupportedEncodingException exception) {
             System.out.println(exception.getMessage());
         } catch (FileNotFoundException exception) {
