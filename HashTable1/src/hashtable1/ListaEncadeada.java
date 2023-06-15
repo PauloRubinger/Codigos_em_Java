@@ -138,12 +138,12 @@ public class ListaEncadeada {
         }
     }
 
-    public Jogador search(int key) {
+    public Jogador search(Jogador player) {
 
         Celula aux = primeiro.getProximo();
 
         while (aux != null) {
-            if (aux.getItem().getAltura() == key) {
+            if (aux.getItem() == player) {
                 return aux.getItem();
             }
             aux = aux.getProximo();

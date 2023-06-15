@@ -158,6 +158,7 @@ public class Jogador {
         HashTable hashTable = new HashTable(size);
         HashSet<Integer> addedPlayerIds = new HashSet<>();
         String entrada = scanner.nextLine();
+        Jogador searchedPlayer;
 
         while (!entrada.equals("FIM")) {
             int playerId = Integer.parseInt(entrada);
@@ -176,7 +177,13 @@ public class Jogador {
             
             for (Jogador jogador : arrayOfPlayers) {
                 if (entrada.equals(jogador.getNome())) {
-                    hashTable.search(jogador.getAltura());
+                    searchedPlayer = hashTable.search(jogador);
+
+                    if (searchedPlayer == null) {
+                        System.out.println("NAO");
+                    } else {
+                        System.out.println(hashTable.hashFunction(searchedPlayer.getAltura()) + " SIM");
+                    }
                 }
             }
             entrada = scanner.nextLine();

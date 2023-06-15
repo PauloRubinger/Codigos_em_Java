@@ -23,14 +23,18 @@ public class HashTable {
 
         int position = hashFunction(newPlayer.getAltura());
 
-        if (hashtable[position].search(newPlayer.getAltura()) == null) {
+        if (hashtable[position].search(newPlayer) == null) {
             hashtable[position].inserirInicio(newPlayer);
         } else {
             throw new Exception("Não foi possível inserir o elemento na tabela: o elemento já foi inserido anteriormente!");
         }
     }
 
-    public Jogador search(int key) {
-        return hashtable[hashFunction(key)].search(key); // this search method is from ListaEncadeada class
+    public Jogador search(Jogador player) throws Exception {
+        return hashtable[hashFunction(player.getAltura())].search(player); // this search method is from ListaEncadeada class
+    }
+
+    public void print() {
+        
     }
 }
