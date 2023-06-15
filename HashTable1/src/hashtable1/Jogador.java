@@ -128,13 +128,13 @@ public class Jogador {
         this.estadoNascimento = estadoNascimento;
     }
 
-    public HashTable leitura() throws Exception {
+    public HashTable leitura(int size) throws Exception {
 
         Scanner scanner = new Scanner(System.in);
 
         ArrayList<Jogador> arrayOfPlayers = new ArrayList<>();
 
-        ArquivoTextoLeitura leituraArquivo = new ArquivoTextoLeitura("AVLTree/tmp/jogadores.txt");
+        ArquivoTextoLeitura leituraArquivo = new ArquivoTextoLeitura("HashTable1/tmp/jogadores.txt");
         leituraArquivo.lerArquivo();
 
         while (leituraArquivo != null) {
@@ -155,7 +155,7 @@ public class Jogador {
 
         leituraArquivo.fecharArquivo();
 
-        HashTable hashTable = new HashTable();
+        HashTable hashTable = new HashTable(size);
         HashSet<Integer> addedPlayerIds = new HashSet<>();
         String entrada = scanner.nextLine();
 
@@ -172,8 +172,13 @@ public class Jogador {
 
         entrada = scanner.nextLine();
 
-        while (!entrada.equals("FIM")) {              
-            hashTable.search(entrada);
+        while (!entrada.equals("FIM")) {
+            
+            for (Jogador jogador : arrayOfPlayers) {
+                if (entrada.equals(jogador.getNome())) {
+                    hashTable.search(jogador.getAltura());
+                }
+            }
             entrada = scanner.nextLine();
         }
 
