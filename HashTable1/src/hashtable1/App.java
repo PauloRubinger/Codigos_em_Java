@@ -10,11 +10,11 @@ public class App {
 
         try {
 
-            // long startTime = System.currentTimeMillis();
+            long startTime = System.currentTimeMillis();
             hashTable = jogador.leitura(size);
-            // long endTime = System.currentTimeMillis();
+            long endTime = System.currentTimeMillis();
 
-            // hashTable.logFile(startTime, endTime);
+            hashTable.logFile(startTime, endTime);
             
         } catch (Exception e) {
             System.out.println(e.getMessage());

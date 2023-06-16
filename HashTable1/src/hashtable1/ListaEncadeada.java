@@ -5,6 +5,7 @@ public class ListaEncadeada {
     private Celula primeiro;
     private Celula ultimo;
     private int tamanho;
+    public static int comp;
 
     public ListaEncadeada() {
 
@@ -13,6 +14,15 @@ public class ListaEncadeada {
         primeiro = sentinela;
         ultimo = sentinela;
         tamanho = 0;
+        comp = 0;
+    }
+
+    public int getComp() {
+        return comp;
+    }
+
+    public void setComp(int comp) {
+        ListaEncadeada.comp = comp;
     }
 
     public boolean listaVazia() {
@@ -142,7 +152,9 @@ public class ListaEncadeada {
 
         Celula aux = primeiro.getProximo();
 
+        comp++;
         while (aux != null) {
+            comp++;
             if (aux.getItem() == player) {
                 return aux.getItem();
             }
