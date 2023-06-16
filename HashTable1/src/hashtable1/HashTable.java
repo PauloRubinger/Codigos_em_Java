@@ -1,8 +1,5 @@
 package hashtable1;
 
-import java.io.FileWriter;
-import java.io.PrintWriter;
-
 public class HashTable {
     
     private int divisionFactor;
@@ -35,19 +32,5 @@ public class HashTable {
 
     public Jogador search(Jogador player) throws Exception {
         return hashTable[hashFunction(player.getAltura())].search(player); // this search method is from ListaEncadeada class
-    }
-
-    public void logFile(long startTime, long endTime) throws Exception {
-        
-        FileWriter file = new FileWriter("794310_hashSeparado.txt");
-        PrintWriter log = new PrintWriter(file);
-        long timeElapsed = endTime - startTime;        
-        
-        log.printf("794310");
-        log.printf("\tTempo de execução(ms):" + timeElapsed);
-        log.printf("\tComparações feitas:" + ListaEncadeada.comp);
-
-        log.close();
-        file.close();
     }
 }

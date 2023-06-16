@@ -2,6 +2,7 @@ package hashtable2;
 
 public class HashTable {
     
+    public static int comp = 0;
     private int divisionFactor;
     private Jogador hashTable[];
 
@@ -50,6 +51,7 @@ public class HashTable {
             position = hashFunction(player.getAltura(), attempts);
 
             if (hashTable[position] == player) {
+                comp++;
                 return position;
             } else {
                 attempts++;
